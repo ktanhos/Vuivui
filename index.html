@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine</title>
+    <title>Gửi Người Thương</title>
     <style>
         body {
             display: flex;
@@ -38,17 +38,22 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.2s;
         }
         #yesBtn { background-color: #ff69b4; color: white; z-index: 10; }
         #noBtn { background-color: #6c757d; color: white; position: relative; }
-        .gif_container img { width: 250px; border-radius: 15px; min-height: 150px; }
+        .img_container img { 
+            width: 280px; 
+            height: 200px; 
+            object-fit: cover; 
+            border-radius: 15px; 
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="gif_container">
-            <img id="mainGif" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3BkbW9idGZ3NjVreWswZ29hbmJ6ZWF6ZHZ3emZ2NmQ3eXZuNXFiaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1uPi5TotgrRSI/giphy.gif" alt="Minion Banana">
+        <div class="img_container">
+            <img id="mainImg" src="https://images.unsplash.com/photo-1550147760-44c9966d6bc7?q=80&w=500" alt="Dino">
         </div>
         <h1 id="question">Em có muốn xem chú khủng long của anh không? ❤️</h1>
         <div class="buttons">
@@ -60,7 +65,7 @@
     <script>
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
-        const mainGif = document.getElementById('mainGif');
+        const mainImg = document.getElementById('mainImg');
         const question = document.getElementById('question');
 
         let yesSize = 1;
@@ -76,16 +81,14 @@
             yesBtn.style.transform = `scale(${yesSize})`;
         }
 
-        noBtn.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            moveButton();
-        });
+        // Hỗ trợ cả di động và máy tính
+        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveButton(); });
         noBtn.addEventListener('mouseover', moveButton);
 
         yesBtn.addEventListener('click', () => {
             question.innerHTML = "Yeayy! Hẹn gặp tối nay nhé! 😘";
-            // Link GIF ăn mừng ổn định
-            mainGif.src = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Y4amZ4bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mP8GermRyzyNi/giphy.gif";
+            // Đổi sang ảnh chúc mừng khi nhấn Đồng ý
+            mainImg.src = "https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=500";
             document.querySelector('.buttons').style.display = 'none';
         });
     </script>
